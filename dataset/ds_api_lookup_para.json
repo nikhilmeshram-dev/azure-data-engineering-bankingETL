@@ -1,0 +1,19 @@
+{
+	"name": "ds_api_lookup_para",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_adls",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "param.json",
+				"fileSystem": "adflogs"
+			}
+		},
+		"schema": {}
+	}
+}
