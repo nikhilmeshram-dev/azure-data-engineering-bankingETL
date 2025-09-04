@@ -61,7 +61,7 @@
 								"source": {
 									"type": "AzureSqlSource",
 									"sqlReaderQuery": {
-										"value": "SELECT *\nFROM @{item().TableName}\nWHERE @{item().WatermarkColumn} > '@{item().LastModifiedDate}'",
+										"value": "SELECT *\nFROM [dbo].@{item().TableName}\nWHERE @{item().WatermarkColumn} > '@{item().LastModifiedDate}'",
 										"type": "Expression"
 									},
 									"queryTimeout": "02:00:00",
@@ -108,6 +108,84 @@
 									}
 								}
 							]
+						},
+						{
+							"name": "Update_lastmodifieddate",
+							"type": "Lookup",
+							"dependsOn": [
+								{
+									"activity": "sqldbToADLS",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "AzureSqlSource",
+									"sqlReaderQuery": {
+										"value": "SELECT max(@{item().WatermarkColumn}) AS last_m_date\nFROM @{item().TableName}",
+										"type": "Expression"
+									},
+									"queryTimeout": "02:00:00",
+									"partitionOption": "None"
+								},
+								"dataset": {
+									"referenceName": "ds_update_lastMdate",
+									"type": "DatasetReference"
+								}
+							}
+						},
+						{
+							"name": "Stored procedure",
+							"type": "SqlServerStoredProcedure",
+							"dependsOn": [
+								{
+									"activity": "Update_lastmodifieddate",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"storedProcedureName": "[dbo].[UpdateWatermarklast_m_date]",
+								"storedProcedureParameters": {
+									"LastModifiedDate": {
+										"value": {
+											"value": "@activity('Update_lastmodifieddate').output.firstRow.last_m_date",
+											"type": "Expression"
+										},
+										"type": "DateTime"
+									},
+									"TableName": {
+										"value": {
+											"value": "@item().TableName",
+											"type": "Expression"
+										},
+										"type": "String"
+									}
+								}
+							},
+							"linkedServiceName": {
+								"referenceName": "ls_azure_sql_db",
+								"type": "LinkedServiceReference"
+							}
 						}
 					]
 				}
