@@ -1,0 +1,9 @@
+{
+	"name": "adf-finance-env-dev",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "2c91e4ba-63a8-4d93-a60b-3cd76860efc7",
+		"tenantId": "15e21a06-cae4-4e6a-b9a0-6e927a9bc8f3"
+	}
+}
