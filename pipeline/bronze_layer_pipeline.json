@@ -1,0 +1,70 @@
+{
+	"name": "bronze_layer_pipeline",
+	"properties": {
+		"activities": [
+			{
+				"name": "sql data ingest",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"policy": {
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "sqldb-bronze-data-ingest",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "adls data ingest",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "sql data ingest",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "adls-bronze-data-ingest",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "api data ingest",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "adls data ingest",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "api-bronze-data-ingest",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			}
+		],
+		"annotations": []
+	}
+}
