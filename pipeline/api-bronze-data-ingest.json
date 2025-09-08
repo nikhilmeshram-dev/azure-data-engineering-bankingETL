@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Lookup1",
+				"name": "Lookup para",
 				"type": "Lookup",
 				"dependsOn": [],
 				"policy": {
@@ -34,11 +34,11 @@
 				}
 			},
 			{
-				"name": "ForEach1",
+				"name": "ForEach",
 				"type": "ForEach",
 				"dependsOn": [
 					{
-						"activity": "Lookup1",
+						"activity": "Lookup para",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -52,7 +52,7 @@
 					},
 					"activities": [
 						{
-							"name": "Copy data1",
+							"name": "Copy data api to adls",
 							"type": "Copy",
 							"dependsOn": [],
 							"policy": {
