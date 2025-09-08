@@ -1,0 +1,17 @@
+{
+	"name": "ls_azure_databricks",
+	"properties": {
+		"annotations": [],
+		"type": "AzureDatabricks",
+		"typeProperties": {
+			"domain": "https://adb-298261705751362.2.azuredatabricks.net",
+			"authentication": "MSI",
+			"workspaceResourceId": "/subscriptions/2b92e55e-ce56-4b46-9a23-4c8e6ea39941/resourceGroups/RG-finance-dev/providers/Microsoft.Databricks/workspaces/dbw-finance-dev",
+			"newClusterNodeType": "Standard_D4s_v3",
+			"newClusterNumOfWorker": "1",
+			"newClusterVersion": "13.3.x-scala2.12",
+			"clusterOption": "Fixed",
+			"newClusterInitScripts": []
+		}
+	}
+}
