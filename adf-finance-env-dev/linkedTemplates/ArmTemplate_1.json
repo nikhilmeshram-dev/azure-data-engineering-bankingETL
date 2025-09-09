@@ -713,10 +713,11 @@
 				"type": "ScheduleTrigger",
 				"typeProperties": {
 					"recurrence": {
-						"frequency": "Minute",
-						"interval": 15,
+						"frequency": "Day",
+						"interval": 1,
 						"startTime": "2025-09-09T11:45:00",
-						"timeZone": "India Standard Time"
+						"timeZone": "India Standard Time",
+						"schedule": {}
 					}
 				}
 			},
