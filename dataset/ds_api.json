@@ -1,17 +1,24 @@
 {
-	"name": "ds_raw",
+	"name": "ds_api",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "AzureDataLakeStorage1",
+			"referenceName": "ls_api",
 			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"p_rel_url": {
+				"type": "string"
+			}
 		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
-				"type": "AzureBlobFSLocation",
-				"fileName": "transaction2.csv",
-				"fileSystem": "source"
+				"type": "HttpServerLocation",
+				"relativeUrl": {
+					"value": "@dataset().p_rel_url",
+					"type": "Expression"
+				}
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
@@ -19,6 +26,5 @@
 			"quoteChar": "\""
 		},
 		"schema": []
-	},
-	"type": "Microsoft.DataFactory/factories/datasets"
+	}
 }
