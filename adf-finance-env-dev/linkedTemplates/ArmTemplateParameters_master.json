@@ -1,0 +1,69 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "adf-finance-env-dev"
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"value": ""
+		},
+		"AzureSqlDatabase1_password": {
+			"value": ""
+		},
+		"ls_adls_accountKey": {
+			"value": ""
+		},
+		"ls_azure_sql_db_password": {
+			"value": ""
+		},
+		"ls_azure_sqldb_password": {
+			"value": ""
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://stfinancedev.dfs.core.windows.net/"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_server": {
+			"value": "sql-finance-server.database.windows.net"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_database": {
+			"value": "sql-financeDB"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_userName": {
+			"value": "nikhil"
+		},
+		"ls_adls_properties_typeProperties_url": {
+			"value": "https://stfinancedev.dfs.core.windows.net/"
+		},
+		"ls_api_properties_typeProperties_url": {
+			"value": "https://raw.githubusercontent.com/"
+		},
+		"ls_azure_databricks_properties_typeProperties_existingClusterId": {
+			"value": "0908-150321-x5zdb7ew"
+		},
+		"ls_azure_sql_db_properties_typeProperties_server": {
+			"value": "sql-finance-server.database.windows.net"
+		},
+		"ls_azure_sql_db_properties_typeProperties_database": {
+			"value": "sql-financeDB"
+		},
+		"ls_azure_sql_db_properties_typeProperties_userName": {
+			"value": "nikhil"
+		},
+		"ls_azure_sqldb_properties_typeProperties_server": {
+			"value": "sql-finance-server.database.windows.net"
+		},
+		"ls_azure_sqldb_properties_typeProperties_database": {
+			"value": "rawdb"
+		},
+		"ls_azure_sqldb_properties_typeProperties_userName": {
+			"value": "nikhil"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
