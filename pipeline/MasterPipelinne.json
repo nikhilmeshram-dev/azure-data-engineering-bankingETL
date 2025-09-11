@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Bronze_layer_pipeline",
+				"name": "Bronze_layer_pipelines",
 				"type": "ExecutePipeline",
 				"dependsOn": [],
 				"policy": {
@@ -23,7 +23,7 @@
 				"type": "ExecutePipeline",
 				"dependsOn": [
 					{
-						"activity": "Bronze_layer_pipeline",
+						"activity": "Bronze_layer_pipelines",
 						"dependencyConditions": [
 							"Succeeded"
 						]
