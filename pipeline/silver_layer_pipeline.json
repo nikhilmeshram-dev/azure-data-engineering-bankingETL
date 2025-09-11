@@ -110,7 +110,7 @@
 				}
 			},
 			{
-				"name": "Loan",
+				"name": "Loans",
 				"type": "DatabricksNotebook",
 				"dependsOn": [],
 				"policy": {
@@ -134,7 +134,7 @@
 				"type": "DatabricksNotebook",
 				"dependsOn": [
 					{
-						"activity": "Loan",
+						"activity": "Loans",
 						"dependencyConditions": [
 							"Succeeded"
 						]
