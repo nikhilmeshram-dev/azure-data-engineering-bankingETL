@@ -5,12 +5,6 @@
 		"factoryName": {
 			"value": "adf-finance-env-dev"
 		},
-		"AzureDataLakeStorage1_accountKey": {
-			"value": ""
-		},
-		"AzureSqlDatabase1_password": {
-			"value": ""
-		},
 		"ls_adls_accountKey": {
 			"value": ""
 		},
@@ -19,18 +13,6 @@
 		},
 		"ls_azure_sqldb_password": {
 			"value": ""
-		},
-		"AzureDataLakeStorage1_properties_typeProperties_url": {
-			"value": "https://stfinancedev.dfs.core.windows.net/"
-		},
-		"AzureSqlDatabase1_properties_typeProperties_server": {
-			"value": "sql-finance-server.database.windows.net"
-		},
-		"AzureSqlDatabase1_properties_typeProperties_database": {
-			"value": "sql-financeDB"
-		},
-		"AzureSqlDatabase1_properties_typeProperties_userName": {
-			"value": "nikhil"
 		},
 		"ls_adls_properties_typeProperties_url": {
 			"value": "https://stfinancedev.dfs.core.windows.net/"
