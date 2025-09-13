@@ -91,7 +91,7 @@
 			"properties": {
 				"activities": [
 					{
-						"name": "Bronze_layer_pipeline",
+						"name": "Bronze_layer_pipelines",
 						"type": "ExecutePipeline",
 						"dependsOn": [],
 						"policy": {
@@ -112,7 +112,7 @@
 						"type": "ExecutePipeline",
 						"dependsOn": [
 							{
-								"activity": "Bronze_layer_pipeline",
+								"activity": "Bronze_layer_pipelines",
 								"dependencyConditions": [
 									"Succeeded"
 								]
@@ -953,7 +953,7 @@
 						}
 					},
 					{
-						"name": "Loan",
+						"name": "Loans",
 						"type": "DatabricksNotebook",
 						"dependsOn": [],
 						"policy": {
@@ -977,7 +977,7 @@
 						"type": "DatabricksNotebook",
 						"dependsOn": [
 							{
-								"activity": "Loan",
+								"activity": "Loans",
 								"dependencyConditions": [
 									"Succeeded"
 								]
@@ -1265,113 +1265,6 @@
 				"[concat(variables('factoryId'), '/datasets/ds_sink_sql_to_adls')]",
 				"[concat(variables('factoryId'), '/datasets/ds_update_lastMdate')]",
 				"[concat(variables('factoryId'), '/linkedServices/ls_azure_sql_db')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/AzureSqlTable2')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureSqlDatabase1",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "Customers"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureSqlDatabase1')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/Parquet1')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "ls_adls",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "Parquet",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobFSLocation",
-						"folderPath": "bnz_customers",
-						"fileSystem": "bronze"
-					},
-					"compressionCodec": "snappy"
-				},
-				"schema": [
-					{
-						"name": "CustomerID",
-						"type": "INT32"
-					},
-					{
-						"name": "FirstName",
-						"type": "UTF8"
-					},
-					{
-						"name": "LastName",
-						"type": "UTF8"
-					},
-					{
-						"name": "DateOfBirth",
-						"type": "DATE"
-					},
-					{
-						"name": "Gender",
-						"type": "UTF8"
-					},
-					{
-						"name": "Email",
-						"type": "UTF8"
-					},
-					{
-						"name": "PhoneNumber",
-						"type": "UTF8"
-					},
-					{
-						"name": "Address",
-						"type": "UTF8"
-					},
-					{
-						"name": "City",
-						"type": "UTF8"
-					},
-					{
-						"name": "State",
-						"type": "UTF8"
-					},
-					{
-						"name": "Pincode",
-						"type": "UTF8"
-					},
-					{
-						"name": "DateOfRegistration",
-						"type": "INT96"
-					},
-					{
-						"name": "CustomerType",
-						"type": "UTF8"
-					},
-					{
-						"name": "PAN",
-						"type": "UTF8"
-					},
-					{
-						"name": "Aadhaar",
-						"type": "UTF8"
-					}
-				]
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/ls_adls')]"
 			]
 		},
 		{
@@ -1884,7 +1777,7 @@
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"annotations": [],
-				"runtimeState": "Started",
+				"runtimeState": "Stopped",
 				"pipelines": [
 					{
 						"pipelineReference": {
@@ -1900,8 +1793,7 @@
 						"frequency": "Day",
 						"interval": 1,
 						"startTime": "2025-09-09T11:45:00",
-						"timeZone": "India Standard Time",
-						"schedule": {}
+						"timeZone": "India Standard Time"
 					}
 				}
 			},
